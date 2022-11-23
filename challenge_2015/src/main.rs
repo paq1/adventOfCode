@@ -4,8 +4,15 @@ use crate::days::day::{Day};
 mod days;
 
 fn main() {
-    let d = Day1 {};
+    let days: Vec<Box<dyn Day>> = vec![
+        Box::new(Day1 {})
+    ];
 
-    println!("{:?}", d.response_1());
-    println!("{:?}", d.response_2());
+    days
+        .iter()
+        .enumerate()
+        .for_each(|(index, d)| {
+            println!("day{} {:?}", index+1, d.response_1());
+            println!("day{} {:?}", index+1, d.response_2());
+        });
 }
