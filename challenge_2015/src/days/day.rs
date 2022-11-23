@@ -1,26 +1,17 @@
 use std::fs;
 
-pub trait Day: ChargementInput1 + ChargementInput2 {
+pub trait Day: ChargementInput1 {
     fn day(&self) -> u8;
 
-    fn input1(&self) -> Vec<String> {
-        self.load_input_1(self.day())
-    }
+    fn response_1(&self) -> String;
+    fn response_2(&self) -> String;
 
-    fn input2(&self) -> Vec<String> {
-        self.load_input_2(self.day())
-    }
+    fn input1(&self) -> Vec<String> { self.load_input_1(self.day()) }
 }
 
 pub trait ChargementInput1: ChargementInput {
     fn load_input_1(&self, day: u8) -> Vec<String> {
         self.load_input(format!("inputs/day{day}/input1.txt").as_str())
-    }
-}
-
-pub trait ChargementInput2: ChargementInput {
-    fn load_input_2(&self, day: u8) -> Vec<String> {
-        self.load_input(format!("inputs/day{day}/input2.txt").as_str())
     }
 }
 

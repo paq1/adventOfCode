@@ -1,21 +1,51 @@
-use std::fs;
+use crate::days::day::{ChargementInput, ChargementInput1, Day};
+
 mod days;
 
-fn read_input(path: &str) -> Vec<String> {
-    let chaines_opt = fs::read_to_string(path)
-        .ok()
-        .map(|chaine| chaine.split("\n").map(|c| c.to_string()).collect::<Vec<String>>());
+struct Day1;
 
-    match chaines_opt {
-        Some(chaines) => chaines,
-        None => vec![]
+impl ChargementInput1 for Day1 {}
+impl ChargementInput for Day1 {}
+
+impl Day1 {
+    pub fn transform_caracter(caracter: char) -> i32 {
+        if caracter == '(' {1}
+        else if caracter == ')' {-1}
+        else {0}
+    }
+}
+
+impl Day for Day1 {
+    fn day(&self) -> u8 { 1u8 }
+
+    fn response_1(&self) -> String {
+        match self.input1().first() {
+            Some(chaine) =>
+                chaine.chars()
+                    .map(Day1::transform_caracter )
+                    .sum::<i32>()
+                    .to_string()
+            ,
+            None => "xxx".to_string()
+        }
+    }
+
+    fn response_2(&self) -> String {
+        match self.input1().first() {
+            Some(chaine) =>
+                chaine.chars()
+                    .map(Day1::transform_caracter )
+                    .sum::<i32>()
+                    .to_string()
+            ,
+            None => "xxx".to_string()
+        }
     }
 }
 
 fn main() {
-    let input = read_input("inputs/day1/input1.txt");
-    input
-        .into_iter()
-        .enumerate()
-        .for_each(|inp| println!("[index:{}] {}", inp.0, inp.1));
+    let d = Day1 {};
+
+    println!("{:?}", d.response_1());
+    println!("{:?}", d.response_2());
 }
