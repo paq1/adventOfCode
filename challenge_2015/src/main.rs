@@ -1,4 +1,5 @@
 use std::fs;
+mod days;
 
 fn read_input(path: &str) -> Vec<String> {
     let chaines_opt = fs::read_to_string(path)
