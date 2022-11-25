@@ -19,13 +19,12 @@ impl Day2 {
                     transformed_element
                 };
 
-                let val = match retrans.parse::<i32>() {
+                match retrans.parse::<i32>() {
                     Ok(value) => value,
                     Err(_) => {
                         panic!("conversion impossible de {}", element);
                     }
-                };
-                val
+                }
             })
             .collect::<Vec<i32>>()
     }
