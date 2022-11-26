@@ -1,7 +1,7 @@
-use crate::days::day::{ChargementInput, ChargementInput1, Day};
+use crate::days::day::{ChargementInput, Day};
 use crate::vector_tools::distinct::*;
 pub struct Day3;
-impl ChargementInput1 for Day3 {}
+
 impl ChargementInput for Day3 {}
 
 impl Day3 {

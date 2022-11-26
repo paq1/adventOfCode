@@ -1,8 +1,7 @@
-use crate::days::day::{ChargementInput, ChargementInput1, Day};
+use crate::days::day::{ChargementInput, Day};
 
 pub struct Day1;
 
-impl ChargementInput1 for Day1 {}
 impl ChargementInput for Day1 {}
 
 impl Day1 {
