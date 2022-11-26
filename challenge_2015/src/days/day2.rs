@@ -5,14 +5,14 @@ pub struct Day2;
 impl ChargementInput for Day2 {}
 
 impl Day2 {
-    fn from_string_to_dimension(&self, chaine: &String, index_line: usize) -> Vec<i32> {
+    fn get_from_string_to_dimension(&self, chaine: &String, index_line: usize) -> Vec<i32> {
         chaine
             .split("x")
             .enumerate()
             .map(|(index, element)| {
                 let transformed_element = element.to_string();
 
-                let retrans = if index == 2 && index_line != self.input1().len()-1 {
+                let retrans = if index == 2 && index_line != self.input().len()-1 {
                     transformed_element[0..transformed_element.len()-1].to_string()
                 } else {
                     transformed_element
@@ -36,11 +36,11 @@ impl Day for Day2 {
 
     fn response_1(&self) -> String {
         let res = self
-            .input1()
+            .input()
             .iter()
             .enumerate()
             .map(|(ligne, chaine)| {
-                let dimensions = self.from_string_to_dimension(chaine, ligne);
+                let dimensions = self.get_from_string_to_dimension(chaine, ligne);
                 let (l, w, h) = if let [l, w, h] = dimensions[..] { (l, w, h) } else { (-1, -1, -1) };
                 let mut sort = dimensions.clone();
                 sort.sort();
@@ -53,11 +53,11 @@ impl Day for Day2 {
 
     fn response_2(&self) -> String {
         let res = self
-            .input1()
+            .input()
             .iter()
             .enumerate()
             .map(|(ligne, chaine)| {
-                let dimensions = self.from_string_to_dimension(chaine, ligne);
+                let dimensions = self.get_from_string_to_dimension(chaine, ligne);
                 let (l, w, h) = if let [l, w, h] = dimensions[..] { (l, w, h) } else { (-1, -1, -1) };
                 let mut sort = dimensions.clone();
                 sort.sort();

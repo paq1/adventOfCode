@@ -16,7 +16,7 @@ impl Day for Day1 {
     fn day(&self) -> u8 { 1u8 }
 
     fn response_1(&self) -> String {
-        match self.input1().first() {
+        match self.input().first() {
             Some(chaine) =>
                 chaine.chars()
                     .map(Day1::transform_caracter )
@@ -28,7 +28,7 @@ impl Day for Day1 {
     }
 
     fn response_2(&self) -> String {
-        match self.input1().first() {
+        match self.input().first() {
             Some(chaine) =>
                 chaine.chars()
                     .map(Day1::transform_caracter )

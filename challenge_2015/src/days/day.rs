@@ -6,7 +6,7 @@ pub trait Day: ChargementInput {
     fn response_1(&self) -> String;
     fn response_2(&self) -> String;
 
-    fn input1(&self) -> Vec<String> { self.load_input(self.day()) }
+    fn input(&self) -> Vec<String> { self.load_input(self.day()) }
 }
 
 pub trait ChargementInput {

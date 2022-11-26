@@ -6,7 +6,7 @@ impl ChargementInput for Day3 {}
 
 impl Day3 {
     fn get_input(&self) -> String {
-        match self.input1().get(0) {
+        match self.input().get(0) {
             Some(chaine) => chaine.clone(),
             None => "".to_string()
         }
