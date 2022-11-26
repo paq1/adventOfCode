@@ -1,4 +1,3 @@
-use std::any::Any;
 use crate::days::day::{ChargementInput, ChargementInput1, Day};
 use crate::vector_tools::distinct::*;
 pub struct Day3;
