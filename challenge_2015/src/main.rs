@@ -3,6 +3,7 @@ use crate::days::{
     day2::Day2,
     day3::Day3,
     day4::Day4,
+    day5::Day5,
 };
 use crate::days::day::{Day};
 
@@ -16,6 +17,7 @@ fn main() {
         Box::new(Day2 {}),
         Box::new(Day3 {}),
         Box::new(Day4 {}),
+        Box::new(Day5 {}),
     ];
 
     days
