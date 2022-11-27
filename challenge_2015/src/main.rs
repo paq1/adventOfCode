@@ -8,6 +8,7 @@ use crate::days::day::{Day};
 
 mod days;
 mod vector_tools;
+mod crypto_tools;
 
 fn main() {
     let days: Vec<Box<dyn Day>> = vec![
