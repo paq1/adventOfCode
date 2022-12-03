@@ -44,6 +44,19 @@ impl Day5 {
         Self::twice_appears_rule(chaine) &&
         Self::black_list_rule(chaine)
     }
+
+    fn rules_part2(chaine: &String) -> bool {
+        let mut result = false;
+        for i in 0..chaine.len() - 2 {
+            let sub = chaine[i..i+2].to_string();
+            let sub2 = chaine[i+2..].to_string();
+            if sub2.contains(&sub) {
+                result = true;
+                break;
+            }
+        }
+        result
+    }
 }
 
 impl Day for Day5 {
