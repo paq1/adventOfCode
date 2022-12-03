@@ -1,5 +1,6 @@
 use crate::days::day::{ChargementInput, Day};
 use crate::string_tools::string_cast::CastTo;
+use crate::vector_tools::sort::Sort;
 
 pub struct Day1;
 
@@ -46,9 +47,12 @@ impl Day for Day1 {
 
     fn response_2(&self) -> String {
         // todo rendre calories immutable (adapter les methods sort et reverse)
-        let mut calories = self.get_elves_calories();
-        calories.sort();
-        calories.reverse();
+        let calories: Vec<i32> = self.get_elves_calories()
+            .sort_immut()
+            .into_iter()
+            .rev()
+            .collect::<Vec<i32>>();
+        //calories.reverse();
         let sum: i32 = calories[0..3].to_vec().iter().sum();
         sum.to_string()
     }
