@@ -1,6 +1,9 @@
+extern crate core;
+
 use crate::days::{
     day::Day,
-    day1::Day1
+    day1::Day1,
+    day2::Day2,
 };
 
 mod days;
@@ -9,7 +12,8 @@ mod string_tools;
 
 fn main() {
     let days: Vec<Box<dyn Day>> = vec![
-        Box::new(Day1 {})
+        Box::new(Day1 {}),
+        Box::new(Day2 {}),
     ];
 
     days
