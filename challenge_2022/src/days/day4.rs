@@ -50,7 +50,11 @@ impl Day for Day4 {
     }
 
     fn response_2(&self) -> String {
-        "???".to_string()
+        self.clean_input().into_iter()
+            .map(|chaine| Day4::transforme_ligne(chaine))
+            .filter(|(r1, r2)| r1.overlaps(r2) || r2.overlaps(r1))
+            .count()
+            .to_string()
     }
 }
 
@@ -62,5 +66,9 @@ struct Range {
 impl Range {
     fn contains(&self, other: &Range) -> bool {
         self.min <= other.min && self.max >= other.max
+    }
+
+    fn overlaps(&self, other: &Range) -> bool {
+        (self.min >= other.min && self.min <= other.max) || (self.max >= other.min && self.max <= other.max)
     }
 }
