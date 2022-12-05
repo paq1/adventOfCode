@@ -36,7 +36,28 @@ impl Day for Day5 {
     }
 
     fn response_2(&self) -> String {
-        "???".to_string()
+        let instructions = self.clean_input().into_iter()
+            .map(|line| Instruction::new(line))
+            .collect::<Vec<_>>();
+
+        let nouvelles_piles = instructions.into_iter()
+            .fold(Pile::load_piles(), |mut acc, instruction| {
+                let a_ajouter = acc[instruction.from as usize - 1].get_n(instruction.r#move as usize);
+                acc[instruction.from as usize - 1] = acc[instruction.from as usize - 1].drop_n(instruction.r#move as usize);
+                acc[instruction.to as usize - 1] = acc[instruction.to as usize - 1].add_vec(&a_ajouter);
+                acc
+            });
+
+        let lettres = nouvelles_piles.into_iter()
+            .map(|pile| pile.out().unwrap_or('?'))
+            .collect::<Vec<_>>();
+
+        let phrase = lettres.into_iter()
+            .map(|c| c.to_string())
+            .collect::<Vec<String>>()
+            .join("");
+
+        phrase
     }
 }
 
@@ -115,11 +136,30 @@ impl Pile {
         }
     }
 
+    fn drop_n(&self, n: usize) -> Pile {
+        Pile {
+            id: self.id,
+            elements: self.elements[..self.elements.len() - n].to_vec()
+        }
+    }
+
     fn add(&self, carac: char) -> Pile {
         Pile {
             id: self.id,
             elements: [self.elements.clone(), vec![carac]].concat()
         }
+    }
+
+    fn add_vec(&self, lst: &Vec<char>) -> Pile {
+        Pile {
+            id: self.id,
+            elements: [self.elements.clone(), lst.clone()].concat()
+        }
+    }
+
+    fn get_n(&self, n: usize) -> Vec<char> {
+        self.elements[self.elements.len()-n..].to_vec()
+        // self.elements[0..1].to_vec()
     }
 }
 
