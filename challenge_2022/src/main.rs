@@ -6,7 +6,10 @@ use crate::days::{
     day2::Day2,
     day3::Day3,
     day4::Day4,
-    day5::Day5
+    day5::Day5,
+    day6::Day6,
+    day7::Day7,
+    day8::Day8
 };
 
 mod days;
@@ -19,7 +22,10 @@ fn main() {
         Box::new(Day2 {}),
         Box::new(Day3 {}),
         Box::new(Day4 {}),
-        Box::new(Day5 {})
+        Box::new(Day5 {}),
+        Box::new(Day6 {}),
+        Box::new(Day7 {}),
+        Box::new(Day8 {})
     ];
 
     days
