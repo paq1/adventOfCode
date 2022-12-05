@@ -67,6 +67,7 @@ struct Pile {
     elements: Vec<char>
 }
 impl Pile {
+    #[allow(dead_code)]
     fn load_piles_test() -> Vec<Pile> {
         vec![
             Pile {
@@ -198,7 +199,7 @@ impl Instruction {
         let destination: usize = self.to as usize;
 
         (0..quantite)
-            .fold(piles.clone(), |mut acc, current| {
+            .fold(piles.clone(), |mut acc, _| {
                 let depart: Pile = acc[dep - 1].clone();
                 let last = depart.out().unwrap_or('?');
                 let nouvelle_dest = acc[destination - 1].add(last);
